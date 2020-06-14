@@ -1,0 +1,1 @@
+allow installd factory_file:filesystem { quotaget };

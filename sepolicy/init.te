@@ -1,0 +1,5 @@
+# Factory/asusfw partition
+allow init factory_file:dir mounton;
+allow init factory_file:filesystem { relabelfrom relabelto mount };
+#allow init system_file:file execute_no_trans;
+allow factory_file self:filesystem associate;

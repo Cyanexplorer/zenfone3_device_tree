@@ -1,0 +1,2 @@
+allow kernel factory_file:file { open read write };
+allow kernel factory_file:dir search;

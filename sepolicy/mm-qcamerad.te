@@ -1,0 +1,10 @@
+allow mm-qcamerad proc_camera:file rw_file_perms;
+allow mm-qcamerad dit_socket:dir { create_dir_perms add_name getattr write };
+allow mm-qcamerad dit_socket:chr_file create;
+allow mm-qcamerad dit_socket:sock_file { create setattr getattr unlink};
+allow mm-qcamerad factory_file:file r_file_perms;
+allow mm-qcamerad factory_file:dir r_dir_perms;
+allow mm-qcamerad vendor_camera_file:file lock;
+allow mm-qcamerad fwk_sensor_hwservice:hwservice_manager find;
+allow mm-qcamerad diag_device:chr_file { open read write ioctl };
+
