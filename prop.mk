@@ -42,6 +42,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.audio.fluence.voicecomm=true \
     persist.vendor.audio.fluence.voicerec=false \
     persist.vendor.audio.fluence.mode=endfire \
+    ro.config.media_vol_steps=30 \
+    ro.config.vc_call_vol_steps=10 \
     ro.qc.sdk.audio.fluencetype=fluence \
     ro.qc.sdk.audio.ssr=false
 
@@ -68,7 +70,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # CNE/DPM
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.cne.feature=1 \
-    persist.vendor.dpm.feature = 10
+    persist.vendor.dpm.feature = 0
 
 # CoreSight
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -135,15 +137,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.opa.eligible_device=true
 
-# IMS
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.data.iwlan.enable=true \
-    persist.dbg.ims_volte_enable=1 \
-    persist.dbg.volte_avail_ovr=1 \
-    persist.dbg.vt_avail_ovr=1 \
-    persist.dbg.wfc_avail_ovr=1 \
-    persist.radio.rat_on=combine
-
 # Logging
 PRODUCT_PROPERTY_OVERRIDES += \
     log.tag.FingerGoodix=W \
@@ -187,6 +180,12 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.qti.am.reschedule_service=true \
     ro.vendor.extension_library=libqti-perfd-client.so
 
+# IMS
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.dbg.volte_avail_ovr=1 \
+    persist.dbg.vt_avail_ovr=1 \
+    persist.radio.rat_on=combine
+
 # Radio
 PRODUCT_PROPERTY_OVERRIDES += \
     rild.libpath=/vendor/lib64/libril-qc-qmi-1.so \
@@ -195,11 +194,12 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.telephony.default_network=22,20 \
     persist.vendor.radio.rat_on=combine \
     persist.radio.flexmap_type=dds \
-    telephony.lteOnCdmaDevice=1 \
     persist.vendor.radio.apm_sim_not_pwdn=1 \
-    persist.radio.aosp_usr_pref_sel=true \
+    persist.vendor.radio.aosp_usr_pref_sel=true \
+    persist.sys.fflag.override.settings_network_and_internet_v2=true \
     persist.vendor.radio.sib16_support=1 \
-    persist.vendor.radio.custom_ecc=0
+    persist.vendor.radio.custom_ecc=0 \
+    persist.dbg.wfc_avail_ovr=1 \
 
 # TCP
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -208,7 +208,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Time Services
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.timed.enable=true \
+    persist.vendor.timed.enable=true \
     persist.delta_time.enable=true
 
 # Trim properties

@@ -1,6 +1,3 @@
-on init
-    export PATH /sbin:/vendor/bin:/system/sbin:/system/bin:/system/xbin:/bin
-
 on fs
     mkdir /dev/validity 0760 system root
     chown system root /dev/vfsspi
@@ -288,5 +285,5 @@ on property:sys.boot_completed=1
 #ASUS_BSP---: add for fingerprint
 
 on property:apexd.status=ready
+    #mount none /system/etc/swcodec/ld.config.txt /apex/com.android.media.swcodec/etc/ld.config.txt bind
     symlink /system/lib64/libashmemd_client.so /system/apex/com.android.media.swcodec/lib64/libashmemd_client.so
-

@@ -28,6 +28,9 @@ TARGET_OTA_ASSERT_DEVICE := Z017,ASUS_Z017D_1,Z012,ASUS_Z012D,ASUS_Z012DC,ASUS_Z
 TARGET_BOARD_PLATFORM := msm8953
 TARGET_BOARD_PLATFORM_GPU := qcom-adreno506
 
+#Snapdragon LLVM
+TARGET_USE_SDCLANG := true
+
 # Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := msm8953
 TARGET_NO_BOOTLOADER := true
@@ -58,15 +61,14 @@ TARGET_CPU_CORTEX_A53 := true
 BOARD_KERNEL_CMDLINE += androidboot.hardware=qcom msm_rtb.filter=0x237 ehci-hcd.park=3 
 BOARD_KERNEL_CMDLINE += lpm_levels.sleep_disabled=1 androidboot.bootdevice=7824900.sdhci 
 BOARD_KERNEL_CMDLINE += loop.max_part=7
-#BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 BOARD_KERNEL_IMAGE_NAME  := Image.gz-dtb
 BOARD_KERNEL_PAGESIZE    := 2048
 BOARD_KERNEL_BASE        := 0x80000000
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x01000000 --tags_offset 0x00000100
 TARGET_KERNEL_ARCH := arm64
 TARGET_KERNEL_HEADER_ARCH := arm64
-TARGET_KERNEL_SOURCE := kernel/asus/msm8953
-TARGET_KERNEL_CONFIG := zenfone3-perf_defconfig
+TARGET_KERNEL_SOURCE := kernel/asus/android_kernel_asus_msm8953-treble
+TARGET_KERNEL_CONFIG := zenfone3-treble_defconfig
 
 # Audio
 BOARD_USES_ALSA_AUDIO := true
@@ -174,10 +176,13 @@ TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
 # Partitions
 BOARD_FLASH_BLOCK_SIZE := 131072
 BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
+BOARD_SYSTEMIMAGE_PARTITION_TYPE := ext4
+BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := squashfs
 BOARD_BOOTIMAGE_PARTITION_SIZE := 33554432        #    32768 * 1024 mmcblk0p58
 BOARD_CACHEIMAGE_PARTITION_SIZE := 134217728      #   131072 * 1024 mmcblk0p65
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 33554432    #    32768 * 1024 mmcblk0p59
 BOARD_SYSTEMIMAGE_PARTITION_SIZE := 4026531840    #  3932160 * 1024 mmcblk0p66
+BOARD_VENDORIMAGE_PARTITION_SIZE := 216006656     #   210944 * 1024 mmcblk0p64
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 57583582208 # 56233967 * 1024 mmcblk0p67
 TARGET_USES_MKE2FS := true
 
@@ -204,8 +209,10 @@ TARGET_POWERHAL_VARIANT := qcom
 # Power
 TARGET_USES_INTERACTION_BOOST := true
 
-# RIL
+# Radio
+DISABLE_RILD_OEM_HOOK := true
 TARGET_PROVIDES_QTI_TELEPHONY_JAR := true
+TARGET_USES_OLD_MNC_FORMAT := true
 
 # Filesystem
 TARGET_FS_CONFIG_GEN := $(DEVICE_PATH)/config.fs
@@ -219,6 +226,11 @@ TARGET_RECOVERY_UI_BLANK_UNBLANK_ON_INIT := true
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
 #TARGET_KERNEL_HAVE_EXFAT := true
+
+# Treble
+BOARD_PROPERTY_OVERRIDES_SPLIT_ENABLED := true
+PRODUCT_FULL_TREBLE_OVERRIDE := true
+TARGET_COPY_OUT_VENDOR := vendor
 
 # SELinux
 include device/qcom/sepolicy-legacy-um/sepolicy.mk
@@ -236,8 +248,8 @@ TARGET_LD_SHIM_LIBS := \
     /system/lib64/libui.so|libui_shim.so
 
 # GPS
-BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := true
 USE_DEVICE_SPECIFIC_GPS := true
+TARGET_NO_RPC := true
 
 # Wifi
 BOARD_HAS_QCOM_WLAN := true
@@ -265,5 +277,5 @@ ifeq ($(HOST_OS),linux)
 endif
 
 # inherit from the proprietary version
--include vendor/asus/Z017/BoardConfigVendor.mk
+-include vendor/asus/zenfone3/BoardConfigVendor.mk
 

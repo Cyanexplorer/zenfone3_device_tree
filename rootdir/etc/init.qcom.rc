@@ -50,9 +50,9 @@ on post-fs
 on early-boot
     # set RLIMIT_MEMLOCK to 64MB
     setrlimit 8 67108864 67108864
-#    start vendor.qseecomd
-#    wait_for_prop vendor.sys.listeners.registered true
-#    write /dev/ipa 1
+    #start vendor.qseecomd
+    #wait_for_prop vendor.sys.listeners.registered true
+    #write /dev/ipa 1
 
     write /sys/kernel/boot_adsp/boot 1
     write /sys/kernel/boot_slpi/boot 1
@@ -231,10 +231,6 @@ on post-fs-data
     mkdir /data/vendor/netmgr 0770 radio radio
     chmod 0770 /data/vendor/netmgr
 
-    #create ipacm log dir
-    mkdir /data/vendor/ipa 0770 radio radio
-    chmod 0770 /data/vendor/ipa
-
     # Create the directories used by CnE subsystem
     mkdir /data/vendor/connectivity 0771 radio radio
     chown radio radio /data/vendor/connectivity
@@ -315,8 +311,8 @@ on post-fs-data
     #Create dir for TUI
     mkdir /data/vendor/tui 0600 system drmrpc
 
-on property:vendor.hw.fm.init=*
-    write /sys/module/radio_iris_transport/parameters/fmsmd_set ${vendor.hw.fm.init}
+on property:hw.fm.init=*
+    write /sys/module/radio_iris_transport/parameters/fmsmd_set ${hw.fm.init}
 
 on property:sys.boot_completed=1
     #Reset read ahead for dm-0 and dm-1 to 512kb
@@ -471,33 +467,11 @@ on charger
     start qcom-post-boot
     start charger_led
 
-service vendor.audio-hal-2-0 /vendor/bin/hw/android.hardware.audio@2.0-service
-    override
-    class hal
-    user audioserver
-    # media gid needed for /dev/fm (radio) and for /data/misc/media (tee)
-    group audio camera drmrpc inet media mediadrm net_bt net_bt_admin net_bw_acct oem_2901 wakelock system
-    capabilities BLOCK_SUSPEND SYS_NICE
-    ioprio rt 4
-    writepid /dev/cpuset/foreground/tasks /dev/stune/foreground/tasks
-    # audioflinger restarts itself when it loses connection with the hal
-    # and its .rc file has an "onrestart restart audio-hal" rule, thus
-    # an additional auto-restart from the init process isn't needed.
-    oneshot
-    interface android.hardware.audio@5.0::IDevicesFactory default
-    interface android.hardware.audio@4.0::IDevicesFactory default
-    interface android.hardware.audio@2.0::IDevicesFactory default
-
 on property:init.svc.surfaceflinger=restarting
     restart vendor.hwcomposer-2-1
 
 on property:vendor.display.lcd_density=*
     setprop ro.sf.lcd_density ${vendor.display.lcd_density}
-
-service time_daemon /vendor/bin/time_daemon
-    class main
-    user root
-    group root
 
 on property:dev.bootcomplete=1
     setprop sys.io.scheduler "bfq"

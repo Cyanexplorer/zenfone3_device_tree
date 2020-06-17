@@ -28,6 +28,9 @@ $(call inherit-product-if-exists, vendor/asus/zenfone3/zenfone3-vendor.mk)
 # Inherit some common LineageOS stuff.
 $(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 
+# Launched with m
+$(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_m.mk)
+
 PRODUCT_NAME := lineage_zenfone3
 PRODUCT_DEVICE := zenfone3
 PRODUCT_BRAND := asus
