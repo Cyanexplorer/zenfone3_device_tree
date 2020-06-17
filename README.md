@@ -1,6 +1,7 @@
 Device Tree for ZenFone 3 (ZE520KL)
 ===========================================
 
+
 The ZenFone 3 (codenamed _"ZE520KL"_) is a mid-range smartphone from ASUS.
 It was released on August 2016.
 
