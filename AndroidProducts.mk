@@ -17,4 +17,5 @@ PRODUCT_MAKEFILES := \
     $(LOCAL_DIR)/lineage_zenfone3.mk
 
 COMMON_LUNCH_CHOICES := \
-    lineage_zenfone3-eng
+    lineage_zenfone3-eng \
+    lineage_zenfone3-userdebug

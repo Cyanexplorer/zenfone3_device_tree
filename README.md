@@ -1,4 +1,4 @@
-Device Tree for ZenFone 3 (ZE520KL)
+Device Tree for ZenFone 3 (ZE520KL)(Treble)
 ===========================================
 
 

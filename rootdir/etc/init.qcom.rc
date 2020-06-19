@@ -337,6 +337,7 @@ service qcom-c_main-sh /vendor/bin/init.class_main.sh
 on property:vold.decrypt=trigger_restart_framework
     start qcom-c_main-sh
     restart vendor.camera-provider-2-4
+    restart vendor.fps_hal
     start cnss_diag
 
 on property:persist.env.fastdorm.enabled=true
@@ -456,6 +457,12 @@ service charger /system/bin/charger
     seclabel u:r:charger:s0
 
 service vendor.msm_irqbalance /vendor/bin/msm_irqbalance -f /vendor/etc/msm_irqbalance.conf
+    class core
+    user root
+    group root
+    disabled
+
+service vendor.msm_irqbal_lb /vendor/bin/msm_irqbalance -f /vendor/etc/msm_irqbalance_little_big.conf
     class core
     user root
     group root

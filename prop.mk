@@ -149,6 +149,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Media
 PRODUCT_PROPERTY_OVERRIDES += \
+    debug.media.codec2=2 \
     qcom.hw.aac.encoder=true \
     media.msm8956hw=0 \
     mm.enable.smoothstreaming=true \
@@ -184,6 +185,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.dbg.volte_avail_ovr=1 \
     persist.dbg.vt_avail_ovr=1 \
+    persist.dbg.wfc_avail_ovr=1 \
+    persist.radio.multisim.config=dsds \
     persist.radio.rat_on=combine
 
 # Radio
@@ -194,12 +197,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.telephony.default_network=22,20 \
     persist.vendor.radio.rat_on=combine \
     persist.radio.flexmap_type=dds \
+    telephony.lteOnCdmaDevice=1 \
     persist.vendor.radio.apm_sim_not_pwdn=1 \
-    persist.vendor.radio.aosp_usr_pref_sel=true \
-    persist.sys.fflag.override.settings_network_and_internet_v2=true \
     persist.vendor.radio.sib16_support=1 \
     persist.vendor.radio.custom_ecc=0 \
-    persist.dbg.wfc_avail_ovr=1 \
+	  persist.sys.fflag.override.settings_network_and_internet_v2=true 
 
 # TCP
 PRODUCT_PROPERTY_OVERRIDES += \

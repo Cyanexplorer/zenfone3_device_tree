@@ -20,13 +20,28 @@ vendor/lib64/librs_adreno_sha1.so
 vendor/lib64/librs_adreno.so
 vendor/lib64/libRSDriver_adreno.so
 
-# ADSP
-vendor/bin/adsprpcd
-vendor/lib/libadsprpc.so
-vendor/lib/libfastcvadsp_stub.so
-vendor/lib/libfastcvopt.so
-vendor/lib64/libadsp_default_listener.so
-vendor/lib64/libadsprpc.so
+# ADSP - from LA.UM.8.6.r1-04400-89xx.0
+vendor/bin/adsprpcd|a5e878691577485c9f7ee33dfe02384a13f0a265
+vendor/lib/libadsprpc.so|1cef31d6abef252028ca7fefee6add0938a32576
+vendor/lib/libadsp_default_listener.so|6311c407e31742bd686e6a6fa5ab6ed4d27fb27a
+vendor/lib/libfastcvadsp_stub.so|996345605e1d631151a6b4e9cd9f65b2c7e82dac
+vendor/lib/libfastcvopt.so|5ddc82093d344b11c532bca2af5285de99706917
+vendor/lib/libmdsprpc.so|343bd2c3de3d5977b98bc7f4f4fd95add493f8f4
+vendor/lib64/libadsprpc.so|1b49735ca4ab61687f16fdad3c218f422257f806
+vendor/lib64/libadsp_default_listener.so|3f69a73528c8687607da617a549ec5a449af3cc0
+vendor/lib64/libfastcvadsp_stub.so|f101b66fa4a450b5af2e6aa9f7aaa28f9a876005
+vendor/lib64/libfastcvopt.so|4c2f8b95479ae5416b61388d343b7dcd9b12d390
+vendor/lib64/libmdsprpc.so|e6a66132a0b0c5315e61a210a745576f35607f98
+
+# ADSP modules - LA.UM.8.6.r1-04400-89xx.0
+vendor/lib/rfsa/adsp/libapps_mem_heap.so|5c82ad9cfe3f30105d899e2a4e90cc7566f81252
+vendor/lib/rfsa/adsp/libdspCV_skel.so|628985174b0088bed21c866d7984d23855e5e150
+vendor/lib/rfsa/adsp/libfastcvadsp_skel.so|1ff4a48009e88435d93fd2b9b0c5ea59cedbb4f7
+vendor/lib/rfsa/adsp/libfastcvadsp.so|9818625bfa018f517e32a8f4a1e7fb4b255e5049
+vendor/lib/rfsa/adsp/libFastRPC_AUE_Forward_skel.so|f4d8675a46c5e52add8f8e90e35b29cd33ac582b
+vendor/lib/rfsa/adsp/libFastRPC_UTF_Forward_Qtc2_skel.so|b9f68e320d24e9c51871a2056e1f47239bd1cb40
+vendor/lib/rfsa/adsp/libscveBlobDescriptor_skel.so|3e9c52069ff07e50191d3b3afb33b30409241ab6
+vendor/lib/rfsa/adsp/libscveT2T_skel.so|91b9200dbb982abf0d6b440668252d892a616f66
 
 # Audio
 vendor/lib/libacdb-fts.so
@@ -56,7 +71,12 @@ vendor/lib64/vendor.qti.hardware.fm@1.0.so
 vendor/lib64/com.qualcomm.qti.ant@1.0.so
 vendor/lib64/vendor.qti.hardware.fm@1.0.so
 
-# CNE - from LA.UM.8.6.r1-04000-89xx.0
+# Camera - from Hydrogen 7.0/NRD90M/V10.3.2.0.NBCCNXM
+vendor/lib/libllvd_smore.so|740de4c339772df80858ddd9390f91ead71eadeb
+vendor/lib/libllvd_sw_tnr.so|406895e2ae614ac84a62d1758bce1810b99c5cda
+vendor/lib/libmmcamera_sw_tnr.so|59b0f350eb0cfa85399c296af14ac680ca99705e
+
+# CNE - from LA.UM.8.6.r1-04400-89xx.0
 etc/cne/Nexus/ATT/ATT_profiles.xml|a0039cb3a4c5a4ca1adf897904b61c91e32d06f7
 etc/cne/Nexus/ROW/ROW_profiles.xml|e3907ff71cbbe0f1073ec1bf0223d26c8282aa35
 etc/cne/Nexus/VZW/VZW_profiles.xml|0d35b3266ea656d8868ae8f5d7e938f4859e9b0a
@@ -65,7 +85,7 @@ product/lib64/com.quicinc.cne.api@1.1.so|8940ad6defe4ffba387a259a698c2def51f1d5f
 product/lib64/com.quicinc.cne.constants@1.0.so|e2f9123a013c2c116b02a1e057870f885808f654
 product/lib64/com.quicinc.cne.constants@2.0.so|b58e07086d9992d0911391ad185f277e1cfd4fe5
 product/lib64/com.quicinc.cne.constants@2.1.so|92fc6a953b061fea1895e58fa298ce8de8a6d03c
--vendor/app/CneApp/CneApp.apk|f7d6ced6f372df62dd2be547602bdf713da804a5
+-vendor/app/CneApp/CneApp.apk|67dd058d8e665a8606c1ff6c3980e844a9bf323e
 -vendor/app/IWlanService/IWlanService.apk|32cb03f65a3412c7e0390b445ce5f36bcedfb809
 vendor/bin/cnd|f498307415b2c5b2b4a239964e29962591bf3cc6
 vendor/etc/cne/wqeclient/ATT/ATT_profile1.xml|578f3f8f56059bfdbef926bcc68d01c15e06951f
@@ -97,15 +117,15 @@ vendor/etc/cne/wqeclient/VZW/VZW_profile5.xml|f76c894f3c6d5b6ed35113a088dc3174c9
 vendor/etc/cne/wqeclient/VZW/VZW_profile6.xml|14d136e7fcc682311757d3edc0b9d3eaeba11815
 vendor/etc/init/cnd.rc|3a5183df3479500fb729493bc56c71166fc10bce
 vendor/lib64/libcacertclient.so|daa1332db3b07eb75350dee833628bd248d9f03e
-vendor/lib64/libcne.so|cf35b2f953ec3340ead4a4585c226aeb6d20fd21
+vendor/lib64/libcne.so|ba33da44063823d86611999cb6cf655b8a5746b6
 vendor/lib64/libcneapiclient.so|9720139912d4a8065589c063919ec6f180f5363d
 vendor/lib64/libcneoplookup.so|a43ba898d6d99924a8d404da2622a9b30feeaaba
 vendor/lib64/libcneqmiutils.so|5796576202829cfd435c90f30927c667d9e76b12
 vendor/lib64/libwms.so|e34c20183b439eef191e382da4af4bd6aca06e9a
-vendor/lib64/libwqe.so|f0834f182257144a888a95d16de23c33d4bd39fb
+vendor/lib64/libwqe.so|87c3ca16c68c24eb74655aaf04376d5803cf108e
 vendor/lib64/libxml.so|110636ac7fc0e228faac2b28e0797d9f9592e4e6
 vendor/lib64/vendor.qti.hardware.cacert@1.0.so|bb56f65d5251057a306a8175daef9571cfd3457b
-vendor/lib64/vendor.qti.hardware.slmadapter@1.0.so|b7d04d8fb56e3312fc2da95653eb93a812cf5d11
+vendor/lib64/vendor.qti.hardware.slmadapter@1.0.so|9681a0d126f132248a6aabb16d373aa843e230b8
 vendor/lib64/vendor.qti.data.factory@2.0.so|3d394f6124db5ad1987c67737bbc30d4d761cecb
 vendor/lib64/vendor.qti.data.factory@2.1.so|a311260fce9e7627548decfff5198da6730ccac1
 vendor/lib64/vendor.qti.data.slm@1.0.so|46c1fdcc98b85d178230c2a3553ba110aecfe01d
@@ -119,6 +139,7 @@ vendor/lib64/vendor.qti.hardware.data.iwlan@1.0.so|a5c90b8e7d6349fce513440bf2623
 vendor/lib64/vendor.qti.hardware.data.latency@1.0.so|ae979b52234d7e965631394f6e1887a910ce0d36
 vendor/lib64/vendor.qti.hardware.data.qmi@1.0.so|35ad6e08d00e8b1695964fa7d6ddbc521eda8628
 vendor/lib64/vendor.qti.latency@2.0.so|20a3037a1aea98f5f490b14c8f5620d2d3a0cf57
+
 
 # DRM - from LA.UM.8.6.r1-04000-89xx.0
 vendor/bin/qseecomd|e43054ef83d7d27a0b1958c693ae07fdac6d73e0
@@ -314,9 +335,9 @@ vendor/lib64/libqmi_encdec.so|68fb631317150d66fd1a39c48f8ef9e0405bbdf2
 
 # QMI - from LA.UM.8.6.r1-04000-89xx.0
 vendor/lib/libpdmapper.so|0959fa03d43b08dea91a57ed6aea228751f80573
-vendor/lib/libqmi_cci.so|064ec7c817a536e76349d0be44364da678d7b816
+vendor/lib/libqmi_cci.so|475321e87d75f35ecf7c98004ba777064ef11c0d
 vendor/lib64/libpdmapper.so|b837641e006ff90a49764d7ac78553de537acd74
-vendor/lib64/libqmi_cci.so|3a93b893312c34b987bddc16c6223dfc3a56d404
+vendor/lib64/libqmi_cci.so|301271923d990e035416fb1ebc3d1b8b6f7b55b7
 vendor/lib64/libqsocket.so|6264041e0e897f78dc9b6a4be6424cbd927669d0
 
 # Radio - from Tissot PKQ1.180917.001.V10.0.17.0.PDHMIXM
@@ -370,8 +391,8 @@ vendor/radio/qcril_database/qcril.db|43b7d5e7ededc9cd5c0b1f7a8941d21d4eb0c9c1
 # Radio - from LA.UM.8.6.r1-04000-89xx.0
 -product/priv-app/qcrilmsgtunnel/qcrilmsgtunnel.apk|71d083671c3ea4cd5e287a63fb254bb0ab60ed20
 product/etc/permissions/telephony_product_privapp-permissions-qti.xml|68901007ba1a48ceb1b728fc3b5483dd51b5e3a0
-product/framework/qti-telephony-common.jar|efdc677049857281a255dc3093502f8c948e0f66
-vendor/bin/adpl|359ee2c438504252e1ddbb12b97cdd0d047a9867
+product/framework/qti-telephony-common.jar|14e32b1cb0fdc9d7802414e95e41376499b51b11
+vendor/bin/adpl|5d4b28d054f7209615195cb796e17d6facca33ee
 vendor/etc/init/dataadpl.rc|cd4907d9bfd438fe5f5c86f5d6cec590ac0bac2a
 vendor/etc/init/dataqti.rc|6abfd1a850d782adbbb6f42c9d8ca870036b2ad1
 vendor/etc/init/netmgrd.rc|711a0b87943ecd5308dc875395a9d67bd080dcef
@@ -466,19 +487,21 @@ vendor/lib/libmms_gyro_vstab.so|ad17c65f9eb5565bd59b967d2e9e74331ef44e83
 vendor/lib/libmms_gyro_vstab_auth.so|2956d5bdaf4b9fc327a03c2be48d93f3c52ebf5f
 vendor/lib/sensors.ALSPS.so|b67864e9976e3b39186d4fd5ff8a16d06b08c950
 vendor/lib64/sensors.ALSPS.so|e15c836664e0c871318d546c4dddaf917c72b1e5
+vendor/lib/sensor_calibrate.so|3aabc8e90f699322bff572670b2f3d39547a2943
+vendor/lib64/sensor_calibrate.so|652d6488d71a8f930081b81ddb26caa2afcddf0e
 
-# Sensors - from LA.UM.8.6.r1-04000-89xx.0
-vendor/bin/sensors.qti|cd7b644ca929b3d53ded2fbec3dafdf68283c1d6
-vendor/lib/hw/activity_recognition.msm8953.so|8775b59a5b99a37eace38f06cb821007bd7c88ae
-vendor/lib/libsensor1.so|5bb6c35dabadb59301e870e319b43212154fa12c
+# Sensors - from LA.UM.8.6.r1-04400-89xx.0
+vendor/bin/sensors.qti|8915364094374f542e1eb7ad361ab2cb5349afbe
+vendor/lib/hw/activity_recognition.msm8953.so|824eb490aee2203d33ea5d864e49b916474cd13e
+vendor/lib/libsensor1.so|beefcf50269962c1f45806a2fd3e127ac855d26c
 vendor/lib/libsensor_reg.so|db6e00ba09e2d7cb65c070a3aecf374f7ea4cea1
-vendor/lib/libsensor_user_cal.so|5bb430aee52db949f49eff66b193e4fbf6802270
-vendor/lib/sensors.ssc.so|bdb1f587d78722c6b4e5e2f5df86c5dfeb49ccf3
+vendor/lib/libsensor_user_cal.so|d4b038e4424af44d4c7ba3b55ff630e98b78527f
+vendor/lib/sensors.ssc.so|91aaf89def079fe0c06c80656548f5229802e0cd
 vendor/lib64/hw/activity_recognition.msm8953.so|19637d97c2cf50a6c7b34d7529f2636198404522
 vendor/lib64/libsensor1.so|4a63118bc426116643216c5f43f70ce0cd52d537
 vendor/lib64/libsensor_reg.so|b977629681598d927830ed99986e818c01c2d34a
 vendor/lib64/libsensor_user_cal.so|a9cd76f06c02e23cb7f1552aa7d51567259faa47
-vendor/lib64/sensors.ssc.so|23f60022a6415f0fb644aed853b3ee5dceecd0de
+vendor/lib64/sensors.ssc.so|3642d92d56cd7b21720ff9d11a008040c16e5c5d
 
 # DRM - Widevine - LA.UM.8.6.r1-04000-89xx.0
 vendor/bin/hw/android.hardware.drm@1.2-service.widevine|b626d9bbf7043c66c8ef903c9d0e5183fc47388d

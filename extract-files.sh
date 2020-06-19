@@ -34,6 +34,7 @@ if [ ! -f "$HELPER" ]; then
 fi
 . "$HELPER"
 
+
 if [ $# -eq 0 ]; then
   SRC=adb
 else
@@ -56,5 +57,13 @@ setup_vendor "$DEVICE" "$VENDOR" "$LINEAGE_ROOT"
 extract "$MY_DIR"/proprietary-files-qc.txt "$SRC"
 extract "$MY_DIR"/proprietary-files-qc-perf.txt "$SRC"
 extract "$MY_DIR"/proprietary-files.txt "$SRC"
+
+DEVICE_BLOB_ROOT="$LINEAGE_ROOT"/vendor/"$VENDOR"/"$DEVICE"/proprietary
+
+# Camera data
+for CAMERA_LIB in libmmcamera2_cpp_module.so libmmcamera2_dcrf.so libmmcamera2_iface_modules.so libmmcamera2_imglib_modules.so libmmcamera2_mct.so libmmcamera2_pproc_modules.so libmmcamera2_q3a_core.so libmmcamera2_sensor_modules.so libmmcamera2_stats_algorithm.so libmmcamera2_stats_modules.so libmmcamera_dbg.so libmmcamera_imglib.so libmmcamera_pdafcamif.so libmmcamera_pdaf.so libmmcamera_tintless_algo.so libmmcamera_tintless_bg_pca_algo.so libmmcamera_tuning.so; do
+    sed -i "s|/data/misc/camera/|/data/vendor/qcam/|g" "$DEVICE_BLOB_ROOT"/vendor/lib/$CAMERA_LIB
+done
+
 
 "$MY_DIR"/setup-makefiles.sh

@@ -16,6 +16,7 @@
 
 # Overlay
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
+DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay-lineage
 
 # These are the hardware-specific features
 PRODUCT_COPY_FILES += \
@@ -137,17 +138,19 @@ PRODUCT_PACKAGES += \
     FMRadio \
     libfmjni
 
+# Bionic
+TARGET_PROCESS_SDK_VERSION_OVERRIDE := \
+    /vendor/bin/mm-qcamera-daemon=23
+
 # Camera
 PRODUCT_PACKAGES += \
-    bspcapability \
-    Snap \
-    libbson
+    android.hardware.camera.provider@2.4-impl \
+    android.hardware.camera.provider@2.4-service
 
 PRODUCT_PACKAGES += \
-    android.hardware.camera.provider@2.4-impl \
-    android.hardware.camera.provider@2.4-service \
-    vendor.qti.hardware.camera.device@1.0 \
-    vendor.qti.hardware.camera.device@1.0_vendor
+    bspcapability \
+    libbson \
+		Snap
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/camera/Invensense/VStab_352x288_30_1.conf:$(TARGET_COPY_OUT_VENDOR)/etc/camera/Invensense/VStab_352x288_30_1.conf \
@@ -224,7 +227,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.biometrics.fingerprint@2.1 \
     android.hardware.biometrics.fingerprint@2.1-service \
-    libunwind
 
 # fwk-detect
 PRODUCT_PACKAGES += \
@@ -251,7 +253,10 @@ PRODUCT_PACKAGES += \
 
 # HIDL
 PRODUCT_PACKAGES += \
-    android.hidl.base@1.0
+    android.hidl.base@1.0 \
+    android.hidl.allocator@1.0 \
+    android.hidl.manager@1.0 \
+    android.hidl.manager@1.0-java
 
 # HW crypto
 PRODUCT_PACKAGES += \
@@ -273,7 +278,8 @@ PRODUCT_PACKAGES += \
 
 # IRQ
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/msm_irqbalance.conf:$(TARGET_COPY_OUT_VENDOR)/etc/msm_irqbalance.conf
+    $(LOCAL_PATH)/configs/msm_irqbalance.conf:$(TARGET_COPY_OUT_VENDOR)/etc/msm_irqbalance.conf \
+    $(LOCAL_PATH)/configs/msm_irqbalance_little_big.conf:$(TARGET_COPY_OUT_VENDOR)/etc/msm_irqbalance_little_big.conf
 
 # IRSC
 PRODUCT_COPY_FILES += \
@@ -293,10 +299,6 @@ PRODUCT_PACKAGES += \
     android.hardware.light@2.0-service.asus_8953
 
 # Media
-PRODUCT_PACKAGES += \
-    com.android.media.swcodec \
-    libsfplugin_ccodec
-
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/media/media_codecs.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs.xml \
     $(LOCAL_PATH)/configs/media/media_codecs_c2.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_c2.xml \
@@ -456,7 +458,7 @@ PRODUCT_PACKAGES += \
 
 # TextClassifier smart selection model files
 PRODUCT_PACKAGES += \
-    textclassifier.bundle1
+    textclassifier.smartselection.bundle1
 
 # Trust HAL
 PRODUCT_PACKAGES += \
